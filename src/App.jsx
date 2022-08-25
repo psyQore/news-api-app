@@ -12,7 +12,6 @@ function App() {
             Buscador de Noticias
           </Typography>
         </header>
-
         <Grid
           container
           direction="row"
@@ -23,7 +22,6 @@ function App() {
             <Form />
           </Grid>
         </Grid>
-
         <ListNews />
       </Container>
     </NewsProvider>

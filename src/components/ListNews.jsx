@@ -7,13 +7,15 @@ import News from "./News";
 const ListNews = () => {
   const { news } = useNews();
 
+  console.log(news)
+
   return (
     <>
       <Typography textAlign="center" marginY={5} variant="h3" component={"h2"}>
         Últimas Noticias
       </Typography>
 
-      <Grid>
+      <Grid container spacing={2}>
         {news.map((article) => (
           <News key={article.url} article={article} />
         ))}

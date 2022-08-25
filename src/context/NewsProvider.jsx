@@ -28,7 +28,7 @@ const NewsProvider = ({ children }) => {
       value={{
         category,
         handleChangeCategory,
-        news
+        news,
       }}
     >
       {children}
@@ -36,6 +36,8 @@ const NewsProvider = ({ children }) => {
   );
 };
 
-export { NewsProvider };
+export { 
+    NewsProvider 
+};
 
 export default NewsContext;
