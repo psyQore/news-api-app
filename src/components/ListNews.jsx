@@ -7,11 +7,9 @@ import useNews from "../hooks/useNews";
 import News from "./News";
 
 const ListNews = () => {
-  const { news, totalNews } = useNews();
+  const { news, totalNews, handleChangePage, page } = useNews();
 
   const totalPages = Math.ceil(totalNews / 20);
-
-  console.log(totalPages);
 
   return (
     <>
@@ -34,7 +32,13 @@ const ListNews = () => {
           marginY: 5,
         }}
       >
-        <Pagination size="large" count={totalPages} color="primary" />
+        <Pagination
+          size="large"
+          count={totalPages}
+          color="primary"
+          onChange={handleChangePage}
+          page={page}
+        />
       </Stack>
     </>
   );

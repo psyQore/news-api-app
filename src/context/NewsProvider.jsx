@@ -11,7 +11,21 @@ const NewsProvider = ({ children }) => {
 
   useEffect(() => {
     const consultAPI = async () => {
-      const url = `https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=${
+      const url = `https://newsapi.org/v2/top-headlines?country=ar&category=${category}&apiKey=${
+        import.meta.env.VITE_API_KEY
+      }`;
+
+      const { data } = await axios(url);
+      setNews(data.articles);
+      setTotalNews(data.totalResults);
+      setPage(1);
+    };
+    consultAPI();
+  }, [category]);
+
+  useEffect(() => {
+    const consultAPI = async () => {
+      const url = `https://newsapi.org/v2/top-headlines?country=ar&page=${page}&category=${category}&apiKey=${
         import.meta.env.VITE_API_KEY
       }`;
 
@@ -20,15 +34,15 @@ const NewsProvider = ({ children }) => {
       setTotalNews(data.totalResults);
     };
     consultAPI();
-  }, [category]);
+  }, [page]);
 
   const handleChangeCategory = (e) => {
     setCategory(e.target.value);
   };
 
-  useEffect(() => {
-
-  }, []);
+  const handleChangePage = (e, value) => {
+    setPage(value);
+  };
 
   return (
     <NewsContext.Provider
@@ -36,7 +50,9 @@ const NewsProvider = ({ children }) => {
         category,
         handleChangeCategory,
         news,
-        totalNews
+        totalNews,
+        handleChangePage,
+        page
       }}
     >
       {children}
@@ -44,8 +60,6 @@ const NewsProvider = ({ children }) => {
   );
 };
 
-export { 
-    NewsProvider 
-};
+export { NewsProvider };
 
 export default NewsContext;
