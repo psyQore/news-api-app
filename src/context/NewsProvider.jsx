@@ -6,6 +6,8 @@ const NewsContext = createContext();
 const NewsProvider = ({ children }) => {
   const [category, setCategory] = useState("general");
   const [news, setNews] = useState([]);
+  const [page, setPage] = useState(1);
+  const [totalNews, setTotalNews] = useState(0);
 
   useEffect(() => {
     const consultAPI = async () => {
@@ -15,6 +17,7 @@ const NewsProvider = ({ children }) => {
 
       const { data } = await axios(url);
       setNews(data.articles);
+      setTotalNews(data.totalResults);
     };
     consultAPI();
   }, [category]);
@@ -22,6 +25,10 @@ const NewsProvider = ({ children }) => {
   const handleChangeCategory = (e) => {
     setCategory(e.target.value);
   };
+
+  useEffect(() => {
+
+  }, []);
 
   return (
     <NewsContext.Provider
