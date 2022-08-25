@@ -1,16 +1,26 @@
-import { useState, useEffect, useContext, createContext } from "react";
+import { useState, useEffect, createContext } from "react";
 
 const NewsContext = createContext();
 
 const NewsProvider = ({ children }) => {
+  const [category, setCategory] = useState("general");
 
-    return (
-        <NewsContext.Provider value={{}}>
-            {children}
-        </NewsContext.Provider>
-    )
-}
+  const handleChangeCategory = (e) => {
+    setCategory(e.target.value);
+  };
 
-export {
-    NewsProvider
-}
+  return (
+    <NewsContext.Provider
+      value={{
+        category,
+        handleChangeCategory,
+      }}
+    >
+      {children}
+    </NewsContext.Provider>
+  );
+};
+
+export { NewsProvider };
+
+export default NewsContext;
