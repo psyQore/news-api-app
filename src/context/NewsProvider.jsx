@@ -36,6 +36,7 @@ const NewsProvider = ({ children }) => {
         category,
         handleChangeCategory,
         news,
+        totalNews
       }}
     >
       {children}
