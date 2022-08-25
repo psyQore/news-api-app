@@ -23,6 +23,7 @@ const Form = () => {
     <form>
       <FormControl fullWidth>
         <InputLabel>Categoría</InputLabel>
+        
         <Select label="Categoria">
           {CATEGORIES.map((category) => (
             <MenuItem key={category.value} value={category.value}>
@@ -36,6 +37,7 @@ const Form = () => {
             Buscar Noticias
           </Button>
         </Box>
+        
       </FormControl>
     </form>
   );
